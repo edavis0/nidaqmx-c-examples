@@ -3,16 +3,6 @@
 ## Overview
 This repository contains NI-DAQmx example programs. Each example contains C source code, and many examples are designed with new users in mind. The examples that have been refactored for new users (using constants and comments) can be found in the list below.
 
-## Building
-To compile the source code on your host machine, you must install the GNU C/C++ Compile Tools for [x64 Linux][2] or [ARMv7 Linux][3]. Make sure to include the CMakeLists.txt file and .vscode directory when building the binary (included in "samplebuildfiles").
-
-Note: It is highly recommended that you first learn how to cross-compile code and deploy to the NI Linux RTOS using Microsoft VSCode by visiting this [NI Forum Post][4]. Then, refer to the included [PDF guide][5] for extra tips.
-
-## Reference Material
-* To review NI-DAQmx C Reference Help, visit this [link][6].
-* To learn more about NI's driver software portfolio, visit this [link][7].
-* To learn more about the NI Linux Real-Time OS, visit this [link][8].
-
 ## Refactored Examples
 * Analog_In:
   * Measure_Acceleration: ContAccelSamps-IntClk-AnlgStart
@@ -27,6 +17,15 @@ Note: It is highly recommended that you first learn how to cross-compile code an
   * Generate_Values: All examples
   * Read_Values: ContReadDigChan-ExtClk, ReadDigChan, and ReadDigPort
 
+## Building
+To compile the source code on your host machine, you must install the GNU C/C++ Compile Tools for [x64 Linux][2] or [ARMv7 Linux][3]. Make sure to include the CMakeLists.txt file and .vscode directory when building the binary (included in "samplebuildfiles").
+
+Note: It is highly recommended that you first learn how to cross-compile code and deploy to the NI Linux RTOS using Microsoft VSCode by visiting this [NI Forum Post][4]. Then, refer to the included [PDF guide][5] for extra tips.
+
+## Reference Material
+* To review NI-DAQmx C Reference Help, visit this [link][6].
+* To learn more about NI's driver software portfolio, visit this [link][7].
+* To learn more about the NI Linux Real-Time OS, visit this [link][8].
 
 [2]: https://www.ni.com/en-us/support/downloads/software-products/download.gnu-c---c---compile-tools-x64.html#338442 "x64 Linux" 
 [3]: https://www.ni.com/en-us/support/downloads/software-products/download.gnu-c---c---compile-tools-for-armv7.html#338448 "ARMv7 Linux" 
