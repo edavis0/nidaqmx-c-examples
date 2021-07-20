@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "x64 (gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "enter program name, for example ${workspaceFolder}/a.exe"
+            ,
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": ".",
+            "environment": [],
+            "showDisplayString": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:/build/18.0/x64/sysroots/i686-nilrtsdk-mingw32/usr/bin/x86_64-nilrt-linux/x86_64-nilrt-linux-gdb.exe",
+            "miDebuggerServerAddress": "serveraddress:port"
+        }
+    ]
+}
