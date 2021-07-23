@@ -12,7 +12,7 @@ Note: this example was built with a Windows 10 host machine and cRIO-9040 (x64_L
 7.  Add the contents of the target’s /usr/local/natinst/lib/ directory to the host’s C:\build\18.0\x64\sysroots\core2-64-nilrt-linux\usr\local\natinst\lib directory.
 8.  Create a copy of the cross-compile project template in a directory of your choosing in the host computer, or use the sample set included in /samplebuildfiles.
 9.  Open the directory in VSCode.
-VSCODE DIRECTORY SCREENSHOT
+![Alt][3]
 10. Modify the c_cpp_properties.json file, as shown below.
 ~~~
 {
@@ -142,17 +142,16 @@ target_link_libraries(ContThrmcplSamps-IntClk nitargetcfg nirocoapi niprtsiu nis
                         nidimu nidmxfu nimdbgu niorbu nipalu nidaqmx )
 ~~~
 14.	From the Command Palette (Ctrl + Shift + P), select Tasks: Run Task, and then “CMake Generate Build Files.” This will run the task created to allow Visual Studio Code to invoke CMake, as shown below.
-BUILD CONSOLE OUTPUT SCREENSHOT 1
+![Alt][4]
 15. From the Tasks: Run Task, select Ninja to build the executable, as shown below.
-BUILD CONSOLE OUTPUT SCREENSHOT 2
+![Alt][5]
 16.	Copy the directory from your host computer to your target.
 17.	Through SSH, run the executable (located in /build/bin), as shown below.
-SSH OUTPUT SCREENSHOT
-
-
-
-
+![Alt][6]
 
 [1]: https://forums.ni.com/t5/NI-Linux-Real-Time-Documents/NI-Linux-Real-Time-Cross-Compiling-Using-the-NI-Linux-Real-Time/ta-p/4026449?profile.language=en "cross compile forum post"
 [2]: https://www.ni.com/en-us/innovations/white-papers/20/building-c-c---applications-for-ni-linux-real-time.html#section--1974177664 "compile tools download list"
-[3]: 
+[3]: https://github.com/edavis0/nidaqmx-c-examples/blob/main/media/VSCode%20Directory%20Screenshot.png "VSCode directory screenshot"
+[4]: https://github.com/edavis0/nidaqmx-c-examples/blob/main/media/Build%20Console%20Output%20Screenshot%201.png "CMake build files screenshot"
+[5]: https://github.com/edavis0/nidaqmx-c-examples/blob/main/media/Build%20Console%20Output%20Screenshot%202.png "Ninja build screenshot"
+[6]: https://github.com/edavis0/nidaqmx-c-examples/blob/main/media/SSH%20Output%20Screenshot.png "SSH output screenshot"
