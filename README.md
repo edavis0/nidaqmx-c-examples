@@ -30,7 +30,7 @@ Note: It is highly recommended that you first learn how to cross-compile code an
 [2]: https://www.ni.com/en-us/support/downloads/software-products/download.gnu-c---c---compile-tools-x64.html#338442 "x64 Linux Toolchain download" 
 [3]: https://www.ni.com/en-us/support/downloads/software-products/download.gnu-c---c---compile-tools-for-armv7.html#338448 "ARMv7 Linux Toolchain download" 
 [4]: https://forums.ni.com/t5/NI-Linux-Real-Time-Documents/NI-Linux-Real-Time-Cross-Compiling-Using-the-NI-Linux-Real-Time/ta-p/4026449 "NI forum post"
-[5]: https://github.com/edavis0/nidaqmx-c-examples/blob/main/CrossCompileTips/NI-DAQmx%20Linux%20Cross-compile%20Tips.md "guide"
+[5]: https://github.com/edavis0/nidaqmx-c-examples/blob/main/CrossCompileTips/NI-DAQmxLinuxCross-compileTips.md "guide"
 [6]: https://zone.ni.com/reference/en-XX/help/370471AM-01/ "reference guide"
 [7]: https://www.ni.com/en-us/innovations/white-papers/21/hardware-drivers-the-key-to-nis-software-connectedness.html "whitepaper"
 [8]: https://www.ni.com/en-us/shop/linux.html "NI Linux homepage"
