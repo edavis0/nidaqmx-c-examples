@@ -153,7 +153,7 @@ target_link_libraries(ContThrmcplSamps-IntClk nitargetcfg nirocoapi niprtsiu nis
 
 [1]: https://forums.ni.com/t5/NI-Linux-Real-Time-Documents/NI-Linux-Real-Time-Cross-Compiling-Using-the-NI-Linux-Real-Time/ta-p/4026449?profile.language=en "cross compile forum post"
 [2]: https://www.ni.com/en-us/innovations/white-papers/20/building-c-c---applications-for-ni-linux-real-time.html#section--1974177664 "compile tools download list"
-[3]: https://github.com/edavis0/nidaqmx-c-examples/blob/main/media/VSCode%20Directory%20Screenshot.png "VSCode directory screenshot"
-[4]: https://github.com/edavis0/nidaqmx-c-examples/blob/main/media/Build%20Console%20Output%20Screenshot%201.png "CMake build files screenshot"
-[5]: https://github.com/edavis0/nidaqmx-c-examples/blob/main/media/Build%20Console%20Output%20Screenshot%202.png "Ninja build screenshot"
-[6]: https://github.com/edavis0/nidaqmx-c-examples/blob/main/media/SSH%20Output%20Screenshot.png "SSH output screenshot"
+[3]: https://github.com/edavis0/nidaqmx-c-examples/blob/main/CrossCompileTips/media/VSCode%20Directory%20Screenshot.png "VSCode directory screenshot"
+[4]: https://github.com/edavis0/nidaqmx-c-examples/blob/main/CrossCompileTips/media/Build%20Console%20Output%20Screenshot%201.png "CMake build files screenshot"
+[5]: https://github.com/edavis0/nidaqmx-c-examples/blob/main/CrossCompileTips/media/Build%20Console%20Output%20Screenshot%202.png "Ninja build screenshot"
+[6]: https://github.com/edavis0/nidaqmx-c-examples/blob/main/CrossCompileTips/media/SSH%20Output%20Screenshot.png "SSH output screenshot"
