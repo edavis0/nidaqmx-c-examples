@@ -65,7 +65,7 @@ const int32 units = DAQmx_Val_Volts; // The units to use to return the voltage m
 // DAQmxCfgSampClkTiming Options
 const char *clockSource = "OnboardClock"; // The source terminal of the Sample Clock. To use the internal clock of the device, use NULL or use OnboardClock.
 const int32 activeEdge = DAQmx_Val_Rising; // Specifies on which edge of the clock to acquire or generate samples. Options: DAQmx_Val_Rising, DAQmx_Val_Falling
-const int32 sampleMode = DAQmx_Val_ContSamps; // Specifies whether the task acquires or generates samples continuously or if it acquires or generates a finite number of samples. Options: DAQmx_Val_FiniteSamps, DAQmx_Val_ContSamps, DAQmx_Val_HWTimedSinglePoint
+const int32 sampleMode = DAQmx_Val_FiniteSamps; // Specifies whether the task acquires or generates samples continuously or if it acquires or generates a finite number of samples. Options: DAQmx_Val_FiniteSamps, DAQmx_Val_ContSamps, DAQmx_Val_HWTimedSinglePoint
 // DAQmxCfgAnlgEdgeStartTrig Options
 const char *startTriggerSource = ""; // The name of a channel or terminal where there is an analog signal to use as the source of the trigger.
 const int32 startTriggerSlope = DAQmx_Val_Rising; // Specifies on which slope of the signal to start acquiring. Options: DAQmx_Val_RisingSlope, DAQmx_Val_FallingSlope

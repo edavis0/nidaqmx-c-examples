@@ -65,7 +65,7 @@ const int32 units = DAQmx_Val_Volts; // The units to use to return the voltage m
 // DAQmxCfgSampClkTiming Options
 const char *clockSource = "/Dev1/PFI0"; // The source terminal of the Sample Clock. To use the internal clock of the device, use NULL or use OnboardClock.
 const int32 activeEdge = DAQmx_Val_Rising; // Specifies on which edge of the clock to acquire or generate samples. Options: DAQmx_Val_Rising, DAQmx_Val_Falling
-const int32 sampleMode = DAQmx_Val_ContSamps; // Specifies whether the task acquires or generates samples continuously or if it acquires or generates a finite number of samples. Options: DAQmx_Val_FiniteSamps, DAQmx_Val_ContSamps, DAQmx_Val_HWTimedSinglePoint
+const int32 sampleMode = DAQmx_Val_FiniteSamps; // Specifies whether the task acquires or generates samples continuously or if it acquires or generates a finite number of samples. Options: DAQmx_Val_FiniteSamps, DAQmx_Val_ContSamps, DAQmx_Val_HWTimedSinglePoint
 // DAQmxReadAnalogF64 Options
 const float64 timeout = 10; // The amount of time, in seconds, to wait for the function to read the sample(s).
 const bool32 fillMode = DAQmx_Val_GroupByScanNumber; // Specifies whether or not the samples are interleaved. Options: DAQmx_Val_GroupByChannel, DAQmx_Val_GroupByScanNumber
