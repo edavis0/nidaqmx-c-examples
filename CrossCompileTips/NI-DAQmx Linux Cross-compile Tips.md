@@ -12,7 +12,9 @@ Note: this example was built with a Windows 10 host machine and cRIO-9040 (x64_L
 7.  Add the contents of the target’s /usr/local/natinst/lib/ directory to the host’s C:\build\18.0\x64\sysroots\core2-64-nilrt-linux\usr\local\natinst\lib directory.
 8.  Create a copy of the cross-compile project template in a directory of your choosing in the host computer, or use the sample set included in /samplebuildfiles.
 9.  Open the directory in VSCode.
+
 ![Alt][3]
+
 10. Modify the c_cpp_properties.json file, as shown below.
 ~~~
 {
