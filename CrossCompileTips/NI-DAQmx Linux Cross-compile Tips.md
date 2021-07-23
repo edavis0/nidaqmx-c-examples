@@ -1,5 +1,6 @@
 # Overview
 Before using this document, refer to the NI forum [post][1], “NI Linux Real-Time Cross Compiling: Using the NI Linux Real-Time Cross Compile Toolchain with Visual Studio Code.” After working through the examples, choose your desired C code from the “nidaqmx-c-examples” repository. The following steps utilize the “ContThrmcplSamps-IntClk.c” c source file from “\Analog_In\Measure_Temperature\ContThrmcplSamples-IntClk”.
+
 Note: this example was built with a Windows 10 host machine and cRIO-9040 (x64_Linux).
 
 # Steps
