@@ -12,6 +12,7 @@ This repository contains NI-DAQmx example programs. Each example contains C sour
   * Measure_Temperature: ContThrmcplSamples-IntClk
   * Measure_Voltage: All examples
 * Analog_Out:
+  * Generate_Current: All examples
   * Generate_Voltage: All examples
 * Digital:
   * Generate_Values: All examples
