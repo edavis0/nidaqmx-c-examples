@@ -67,8 +67,8 @@
         goto Error;                          \
     else
 
-int32 CVICALLBACK EveryNCallback(TaskHandle taskHandle, int32 everyNsamplesEventType, uInt32 nSamples, void* callbackData);
-int32 CVICALLBACK DoneCallback(TaskHandle taskHandle, int32 status, void* callbackData);
+int32 EveryNCallback(TaskHandle taskHandle, int32 everyNsamplesEventType, uInt32 nSamples, void* callbackData);
+int32 DoneCallback(TaskHandle taskHandle, int32 status, void* callbackData);
 
 /*********************************************/
 // DAQmx Configuration Options
@@ -76,6 +76,7 @@ int32 CVICALLBACK DoneCallback(TaskHandle taskHandle, int32 status, void* callba
 // Sampling Options
 const float64 sampleRate = 1000.0; // The sampling rate in samples per second per channel.
 const uInt64 sampsPerChan = 1000; // The number of samples to acquire or generate for each channel in the task.
+
 // DAQmxCreateAIAccelChan Options
 const char* physicalChannel = "Dev1/ai0"; // The names of the physical channels to use to create virtual channels. You can specify a list or range of physical channels.
 const int32 terminalConfig = DAQmx_Val_PseudoDiff; // The input terminal configuration for the channel. Options: DAQmx_Val_Cfg_Default, DAQmx_Val_RSE, DAQmx_Val_NRSE, DAQmx_Val_Diff, DAQmx_Val_PseudoDiff
@@ -86,19 +87,24 @@ const float64 sensitivity = 175; // The sensitivity of the sensor. This value is
 const int32 sensitivityUnits = DAQmx_Val_mVoltsPerG; // The units of sensitivity. Options: DAQmx_Val_mVoltsPerG, DAQmx_Val_VoltsPerG
 const int32 currentExcitSource = DAQmx_Val_Internal; // The source of excitation. Options: DAQmx_Val_Internal,DAQmx_Val _External, DAQmx_Val_None
 const float64 currentExcitVal = 0.004; // The amount of excitation, in amperes, that the sensor requires.
+
 // DAQmxCfgSampClkTiming Options
 const char* clockSource = "OnboardClock"; // The source terminal of the Sample Clock. To use the internal clock of the device, use NULL or use OnboardClock.
 const int32 activeEdge = DAQmx_Val_Rising; // Specifies on which edge of the clock to acquire or generate samples. Options: DAQmx_Val_Rising, DAQmx_Val_Falling
 const int32 sampleMode = DAQmx_Val_ContSamps; // Specifies whether the task acquires or generates samples continuously or if it acquires or generates a finite number of samples. Options: DAQmx_Val_FiniteSamps, DAQmx_Val_ContSamps, DAQmx_Val_HWTimedSinglePoint
+
 // DAQmxCfgAnlgEdgeStartTrig Options
 const char* startTriggerSource = "/Dev1/APFI0"; // The name of a channel or terminal where there is an analog signal to use as the source of the trigger.
 const int32 startTriggerSlope = DAQmx_Val_RisingSlope; // Specifies on which slope of the signal to start acquiring. Options: DAQmx_Val_RisingSlope, DAQmx_Val_FallingSlope
 const float64 startTriggerLevel = 30.0; // The threshold at which to start acquiring samples. Specify this value in the units of the measurement.
+
 // DAQmxSetAnlgEdgeStartTrigHyst Options
 const float64 hystLevel = 10.0; // Specifies a hysteresis level in the units of the measurement.
+
 // DAQmxRegisterEveryNSamplesEvent Options
 const int32 everyNsamplesEventType = DAQmx_Val_Acquired_Into_Buffer; // The type of event you want to receive. Options: DAQmx_Val_Acquired_Into_Buffer, DAQmx_Val_Transferred_From_Buffer
 const uInt32 options = 0; // Use this parameter to set certain options. Pass a value of zero if no options need to be set. Options: 0, DAQmx_Val_SynchronousEventCallbacks
+
 // DAQmxReadAnalogF64 Options
 const float64 timeout = 10; // The amount of time, in seconds, to wait for the function to read the sample(s).
 const bool32 fillMode = DAQmx_Val_GroupByScanNumber; // Specifies whether or not the samples are interleaved. Options: DAQmx_Val_GroupByChannel, DAQmx_Val_GroupByScanNumber
@@ -147,7 +153,7 @@ Error:
     return 0;
 }
 
-int32 CVICALLBACK EveryNCallback(TaskHandle taskHandle, int32 everyNsamplesEventType, uInt32 nSamples, void* callbackData)
+int32 EveryNCallback(TaskHandle taskHandle, int32 everyNsamplesEventType, uInt32 nSamples, void* callbackData)
 {
     int32 error = 0;
     char errBuff[2048] = { '\0' };
@@ -195,7 +201,7 @@ Error:
     return 0;
 }
 
-int32 CVICALLBACK DoneCallback(TaskHandle taskHandle, int32 status, void* callbackData)
+int32 DoneCallback(TaskHandle taskHandle, int32 status, void* callbackData)
 {
     int32 error = 0;
     char errBuff[2048] = { '\0' };

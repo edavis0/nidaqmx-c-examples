@@ -58,8 +58,8 @@
 
 #define DAQmxErrChk(functionCall) if( DAQmxFailed(error=(functionCall)) ) goto Error; else
 
-int32 CVICALLBACK EveryNCallback(TaskHandle taskHandle, int32 everyNsamplesEventType, uInt32 nSamples, void *callbackData);
-int32 CVICALLBACK DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData);
+int32 EveryNCallback(TaskHandle taskHandle, int32 everyNsamplesEventType, uInt32 nSamples, void *callbackData);
+int32 DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData);
 
 /*********************************************/
 // DAQmx Configuration Options
@@ -129,7 +129,7 @@ Error:
 	return 0;
 }
 
-int32 CVICALLBACK EveryNCallback(TaskHandle taskHandle, int32 everyNsamplesEventType, uInt32 nSamples, void *callbackData)
+int32 EveryNCallback(TaskHandle taskHandle, int32 everyNsamplesEventType, uInt32 nSamples, void *callbackData)
 {
 	int32       error=0;
 	char        errBuff[2048]={'\0'};
@@ -163,7 +163,7 @@ Error:
 	return 0;
 }
 
-int32 CVICALLBACK DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData)
+int32 DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData)
 {
 	int32   error=0;
 	char    errBuff[2048]={'\0'};

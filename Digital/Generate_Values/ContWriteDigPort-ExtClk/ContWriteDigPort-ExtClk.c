@@ -41,7 +41,7 @@
 
 #define DAQmxErrChk(functionCall) if( DAQmxFailed(error=(functionCall)) ) goto Error; else
 
-int32 CVICALLBACK DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData);
+int32 DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData);
 
 /*********************************************/
 // DAQmx Configuration Options
@@ -49,13 +49,16 @@ int32 CVICALLBACK DoneCallback(TaskHandle taskHandle, int32 status, void *callba
 // Sampling Options
 const float64 sampleRate = 1000.0; // The sampling rate in samples per second per channel.
 const uInt32 sampsPerChan = 8; // The number of samples to acquire or generate for each channel in the task.
+
 // DAQmxCreateDOChan Options
 const char *lines = "Dev1/port0"; // The names of the digital lines used to create a virtual channel. Specifying a port and no lines is the equivalent of specifying all the lines of that port in order.
 const int32 lineGrouping = DAQmx_Val_ChanForAllLines; // Specifies whether to group digital lines into one or more virtual channels. Options: DAQmx_Val_ChanPerLine, DAQmx_Val_ChanForAllLines
+
 // DAQmxCfgSampClkTiming Options
 const char *clockSource = "/Dev1/PFI0"; // The source terminal of the Sample Clock. To use the internal clock of the device, use NULL or use OnboardClock.
 const int32 activeEdge = DAQmx_Val_Rising; // Specifies on which edge of the clock to acquire or generate samples. Options: DAQmx_Val_Rising, DAQmx_Val_Falling
 const int32 sampleMode = DAQmx_Val_ContSamps; // Specifies whether the task acquires or generates samples continuously or if it acquires or generates a finite number of samples. Options: DAQmx_Val_FiniteSamps, DAQmx_Val_ContSamps, DAQmx_Val_HWTimedSinglePoint
+
 // DAQmxWriteDigitalU32 Options
 const int32 autoStart = 0; // Specifies whether or not this function automatically starts the task if you do not start it.
 const float64 timeout = 10.0; // The amount of time, in seconds, to wait for this function to write all the samples. To specify an infinite wait, pass -1 (DAQmx_Val_WaitInfinitely).
@@ -107,7 +110,7 @@ Error:
 	return 0;
 }
 
-int32 CVICALLBACK DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData)
+int32 DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData)
 {
 	int32   error=0;
 	char    errBuff[2048]={'\0'};

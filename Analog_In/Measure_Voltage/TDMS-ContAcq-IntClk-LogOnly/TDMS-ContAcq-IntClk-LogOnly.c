@@ -48,7 +48,7 @@
 
 #define DAQmxErrChk(functionCall) if( DAQmxFailed(error=(functionCall)) ) goto Error; else
 
-int32 CVICALLBACK DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData);
+int32 DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData);
 
 /*********************************************/
 // DAQmx Configuration Options
@@ -56,16 +56,19 @@ int32 CVICALLBACK DoneCallback(TaskHandle taskHandle, int32 status, void *callba
 // Sampling Options
 const float64 sampleRate = 1000.0; // The sampling rate in samples per second per channel.
 const uInt64 sampsPerChan = 1000; // The number of samples to acquire or generate for each channel in the task.
+
 // DAQmxCreateAIVoltageChan Options
 const char *physicalChannel = "Dev1/ai0"; // The names of the physical channels to use to create virtual channels. You can specify a list or range of physical channels.
 const int32 terminalConfig = DAQmx_Val_Cfg_Default; // The input terminal configuration for the channel. Options: DAQmx_Val_Cfg_Default, DAQmx_Val_RSE, DAQmx_Val_NRSE, DAQmx_Val_Diff, DAQmx_Val_PseudoDiff
 const float64 minVal = -10.0; // The minimum value, in units, that you expect to measure.
 const float64 maxVal = 10.0; // The maximum value, in units, that you expect to measure.
 const int32 units = DAQmx_Val_Volts; // The units to use to return the voltage measurements. Options: DAQmx_Val_Volts, DAQmx_Val_FromCustomScale
+
 // DAQmxCfgSampClkTiming Options
 const char *clockSource = "OnboardClock"; // The source terminal of the Sample Clock. To use the internal clock of the device, use NULL or use OnboardClock.
 const int32 activeEdge = DAQmx_Val_Rising; // Specifies on which edge of the clock to acquire or generate samples. Options: DAQmx_Val_Rising, DAQmx_Val_Falling
 const int32 sampleMode = DAQmx_Val_ContSamps; // Specifies whether the task acquires or generates samples continuously or if it acquires or generates a finite number of samples. Options: DAQmx_Val_FiniteSamps, DAQmx_Val_ContSamps, DAQmx_Val_HWTimedSinglePoint
+
 // DAQmxConfigureLogging Options
 const char *filePath = "../../test_data.tdms"; //The path to the TDMS file to which you want to log data.
 const int32 loggingMode = DAQmx_Val_Log; // Specifies whether to enable logging and whether to allow reading data while logging. Options DAQmx_Val_Off, DAQmx_Val_Log, DAQmx_Val_LogAndRead
@@ -118,7 +121,7 @@ Error:
 	return 0;
 }
 
-int32 CVICALLBACK DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData)
+int32 DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData)
 {
 	int32   error=0;
 	char    errBuff[2048]={'\0'};

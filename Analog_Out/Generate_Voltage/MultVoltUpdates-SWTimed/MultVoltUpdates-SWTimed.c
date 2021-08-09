@@ -72,11 +72,13 @@
 // Sampling Options
 const float64 sampleRate = 1000; // The sampling rate in samples per second per channel.
 const uInt64 sampsPerChan = 1000; // The number of samples to acquire or generate for each channel in the task.
+
 // DAQmxCreateAOVoltageChan Options
 const char *physicalChannel = "Dev1/ao0"; // The names of the physical channels to use to create virtual channels. You can specify a list or range of physical channels.
 const float64 minVal = -10.0; // The minimum value, in units, that you expect to generate.
 const float64 maxVal = 10.0; // The maximum value, in units, that you expect to generate.
 const int32 units = DAQmx_Val_Volts; // The units in which to generate voltage. Options: DAQmx_Val_Volts, DAQmx_Val_FromCustomScale
+
 // DAQmxWriteAnalogScalarF64 Options
 const bool32 autoStart = 1; // Specifies whether or not this function automatically starts the task if you do not start it.
 const float64 timeout = 10.0; // The amount of time, in seconds, to wait for this function to write the value. To specify an infinite wait, pass -1 (DAQmx_Val_WaitInfinitely).

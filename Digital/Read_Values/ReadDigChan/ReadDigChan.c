@@ -41,6 +41,7 @@
 // DAQmxCreateDIChan Options
 const char *lines = "Dev1/port0/line0:7"; // The names of the digital lines used to create a virtual channel. You can specify a list or range of lines.
 const int32 lineGrouping = DAQmx_Val_ChanForAllLines; // Specifies whether to group digital lines into one or more virtual channels. Options: DAQmx_Val_ChanPerLine, DAQmx_Val_ChanForAllLines
+
 // DAQmxReadDigitalLines Options
 const int32 numSampsPerChan = 1; // The number of samples, per channel, to read. The default value of -1 (DAQmx_Val_Auto) reads all available samples.
 const float64 timeout = 10.0; // The amount of time, in seconds, to wait for the function to read the sample(s). To specify an infinite wait, pass -1 (DAQmx_Val_WaitInfinitely).

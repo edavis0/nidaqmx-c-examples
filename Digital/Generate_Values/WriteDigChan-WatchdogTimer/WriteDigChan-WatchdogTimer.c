@@ -61,17 +61,20 @@
 // DAQmxCreateDOChan Options
 const char *lines = "Dev1/port0/line0:7"; // The names of the digital lines used to create a virtual channel. Specifying a port and no lines is the equivalent of specifying all the lines of that port in order.
 const int32 lineGrouping = DAQmx_Val_ChanForAllLines; // Specifies whether to group digital lines into one or more virtual channels. Options: DAQmx_Val_ChanPerLine, DAQmx_Val_ChanForAllLines
+
 // DAQmxCreateWatchdogTimerTask Options
 const char *deviceName = "Dev1"; // Specifies the name to assign to the device. If unspecified, NI-DAQmx chooses the device name.
 const char *wdTaskName = "wd"; // The name to assign to the watchdog task.
 const float64 wdTimeout = 0.01; // The time, in seconds, until the watchdog timer expires. A value of DAQmx_Val_WaitInfinitely indicates that the internal timer never expires.
 const char *channelName = "Dev1/port0/line0:7"; // The digital line or port to modify.
 const int32 expState = DAQmx_Val_High; // The state to which to set the digital physical channel when the watchdog timer expires. Options: DAQmx_Val_High, DAQmx_Val_Low, DAQmx_Val_Tristate, DAQmx_Val_NoChange
+
 // DAQmxWriteDigitalLines Options
 const int32 numSampsPerChan = 1; // The number of samples, per channel, to write. You must pass in a value of 0 or more in order for the sample to write.
 const bool32 autoStart = 1; // Specifies whether or not this function automatically starts the task if you do not start it.
 const float64 timeout = 10.0; // The amount of time, in seconds, to wait for this function to write all the samples. To specify an infinite wait, pass -1 (DAQmx_Val_WaitInfinitely). 
 const bool32 dataLayout = DAQmx_Val_GroupByChannel; // Specifies how the samples are arranged, either interleaved or noninterleaved. Options: DAQmx_Val_GroupByChannel, DAQmx_Val_GroupByScanNumber
+
 // DAQmxControlWatchdogTask Options
 const int32 action = DAQmx_Val_ResetTimer; // Specifies how to control the watchdog task. Options: DAQmx_Val_ResetTimer, DAQmx_Val_ClearExpiration
 

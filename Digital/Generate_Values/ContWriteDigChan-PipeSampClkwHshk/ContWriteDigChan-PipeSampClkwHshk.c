@@ -63,7 +63,7 @@
 
 #define DAQmxErrChk(functionCall) if( DAQmxFailed(error=(functionCall)) ) goto Error; else
 
-int32 CVICALLBACK DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData);
+int32 DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData);
 
 /*********************************************/
 // DAQmx Configuration Options
@@ -71,30 +71,41 @@ int32 CVICALLBACK DoneCallback(TaskHandle taskHandle, int32 status, void *callba
 // DAQmxCreateDOChan Options
 const char *lines = "PXI1Slot3/port0"; // The names of the digital lines used to create a virtual channel. Specifying a port and no lines is the equivalent of specifying all the lines of that port in order.
 const int32 lineGrouping = DAQmx_Val_ChanForAllLines; // Specifies whether to group digital lines into one or more virtual channels. Options: _ChanPerLine, _ChanForAllLines
+
 // DAQmxCfgPipelinedSampClkTiming Options
 const char *clockSource = ""; // The source terminal of the Sample Clock. To use the internal clock of the device, use NULL or use OnboardClock.
 const float64 rate = 100000.0; // The sampling rate in samples per second per channel.
 const int32 activeEdge = DAQmx_Val_Rising; // Specifies on which edge of the clock to acquire or generate samples. Options: _Rising, _Falling
 const int32 sampleMode = DAQmx_Val_ContSamps; // Specifies whether the task acquires or generates samples continuously or if it acquires or generates a finite number of samples. Options: _FiniteSamps, _ContSamps, _HWTimedSinglePoint
 const uInt64 sampsPerChanToAcquire = 1000; // The number of samples to acquire or generate for each channel in the task.
+
 // DAQmxSetPauseTrigType Options
 const int32 pauseTrigType = DAQmx_Val_DigLvl; // Specifies the type of trigger to use to pause a task. Options: _AnlgLvl, _AnlgWin, _DigLvl, _DigPattern, _None
+
 // DAQmxSetDigLvlPauseTrigSrc Options
 const char *pauseTrigSource = "/Dev1/PFI1"; // Specifies the name of a terminal where there is a digital signal to use as the source of the Pause Trigger.
+
 // DAQmxSetDigLvlPauseTrigWhen Options
 const int32 pauseTrigWhen = DAQmx_Val_High; // Specifies whether the task pauses while the signal is high or low. Options: _High, _Low
+
 // DAQmxSetExportedSampClkOutputTerm Options
 const char *clockOutputTerm = "/Dev1/PFI4"; // Specifies the terminal to which to route the Sample Clock.
+
 // DAQmxSetExportedSampClkPulsePolarity Options
 const int32 clockPulsePolarity = DAQmx_Val_ActiveHigh; // Specifies the polarity of the exported Sample Clock if Output Behavior is DAQmx_Val_Pulse. Options: _ActiveHigh, _ActiveLow
+
 // DAQmxSetExportedDataActiveEventLvlActiveLvl Options
 const int32 dataActiveEventLevel = DAQmx_Val_ActiveLow; // Specifies the polarity of the exported Data Active Event. Options: _ActiveHigh, _ActiveLow
+
 // DAQmxSetExportedDataActiveEventOutputTerm Options
 const char *dataActiveEventTerminal = "/Dev1/PFI0"; // Specifies the terminal to which to export the Data Active Event.
+
 // DAQmxSetSampClkUnderflowBehavior Options
 const int32 underflowBehavior = DAQmx_Val_PauseUntilDataAvailable; // Specifies the action to take when the onboard memory of the device becomes empty. Options: _HaltOutputAndError, _PauseUntilDataAvailable
+
 // DAQmxSetWriteRegenMode Options
 const int32 regenMode = DAQmx_Val_DoNotAllowRegen; // Specifies whether to allow NI-DAQmx to generate the same data multiple times. Options: _AllowRegen, _DoNotAllowRegen
+
 // DAQmxWriteDigitalU32 Options
 const int32 numSampsPerChan = 1000; // The number of samples, per channel, to write.
 const int32 autoStart = 0; // Specifies whether or not this function automatically starts the task if you do not start it.
@@ -158,7 +169,7 @@ Error:
 	return 0;
 }
 
-int32 CVICALLBACK DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData)
+int32 DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData)
 {
 	int32   error=0;
 	char    errBuff[2048]={'\0'};

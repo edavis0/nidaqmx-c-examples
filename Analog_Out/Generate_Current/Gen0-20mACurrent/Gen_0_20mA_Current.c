@@ -70,6 +70,7 @@ const char *physicalChannel = "Dev1/ao0"; // The names of the physical channels 
 const float64 minVal = 0.0; // The minimum value, in units, that you expect to generate.
 const float64 maxVal = 0.02; // The maximum value, in units, that you expect to generate.
 const int32 units = DAQmx_Val_Amps; // The units in which to generate current. Options: DAQmx_Val_Amps, DAQmx_Val_FromCustomScale
+
 // DAQmxWriteAnalogF64 Options
 const int32 numSampsPerChan = 1; // The number of samples, per channel, to write. You must pass in a value of 0 or more in order for the sample to write.
 const bool32 autoStart = 1; // The amount of time, in seconds, to wait for this function to write all the samples. To specify an infinite wait, pass -1 (DAQmx_Val_WaitInfinitely).

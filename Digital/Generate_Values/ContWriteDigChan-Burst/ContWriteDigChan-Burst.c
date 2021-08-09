@@ -58,7 +58,7 @@
 
 #define DAQmxErrChk(functionCall) if( DAQmxFailed(error=(functionCall)) ) goto Error; else
 
-int32 CVICALLBACK DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData);
+int32 DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData);
 
 /*********************************************/
 // DAQmx Configuration Options
@@ -66,15 +66,18 @@ int32 CVICALLBACK DoneCallback(TaskHandle taskHandle, int32 status, void *callba
 // Sampling Options
 const float64 sampleClkRate = 1000.0; // Specifies the sampling rate in samples per channel per second.
 const uInt64 sampsPerChan = 1000; // The number of samples to acquire from each channel.
+
 // DAQmxCreateDOChan Options
 const char *lines = "PXI1Slot3/port0"; // The names of the digital lines used to create a virtual channel. Specifying a port and no lines is the equivalent of specifying all the lines of that port in order.
 const int32 lineGrouping = DAQmx_Val_ChanForAllLines; // Specifies whether to group digital lines into one or more virtual channels. Options: DAQmx_Val_ChanPerLine, DAQmx_Val_ChanForAllLines
+
 // DAQmxCfgBurstHandshakingTimingExportClock Options
 const int32 sampleMode = DAQmx_Val_ContSamps; // Specifies whether the task acquires or generates samples continuously or if it acquires or generates a finite number of samples. // Options: DAQmx_Val_FiniteSamps, DAQmx_Val_ContSamps, DAQmx_Val_HWTimedSinglePoint
 const char *sampleClkOutpTerm = "/Dev1/PFI0"; // Specifies the terminal to which to route the Sample Clock.
 const int32 sampleClkPulsePolarity = DAQmx_Val_ActiveHigh; // Specifies if the polarity for the exported sample clock is active high or active low.
 const int32 pauseWhen = DAQmx_Val_Low; // Specifies whether the task pauses while the signal is high or low.
 const int32 readyEventActiveLevel = DAQmx_Val_ActiveHigh; // Specifies the polarity for the Ready for Transfer event.
+
 // DAQmxWriteDigitalU32 Options
 const int32 autoStart = 0; // Specifies whether or not this function automatically starts the task if you do not start it.
 const float64 timeout = 10.0; // The amount of time, in seconds, to wait for this function to write all the samples. To specify an infinite wait, pass -1 (DAQmx_Val_WaitInfinitely).
@@ -126,7 +129,7 @@ Error:
 	return 0;
 }
 
-int32 CVICALLBACK DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData)
+int32 DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData)
 {
 	int32   error=0;
 	char    errBuff[2048]={'\0'};

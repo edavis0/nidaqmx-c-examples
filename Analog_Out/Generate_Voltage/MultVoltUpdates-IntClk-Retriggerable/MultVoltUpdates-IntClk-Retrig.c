@@ -63,7 +63,7 @@
 
 #define DAQmxErrChk(functionCall) if( DAQmxFailed(error=(functionCall)) ) goto Error; else
 
-int32 CVICALLBACK DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData);
+int32 DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData);
 
 /*********************************************/
 // DAQmx Configuration Options
@@ -71,20 +71,25 @@ int32 CVICALLBACK DoneCallback(TaskHandle taskHandle, int32 status, void *callba
 // Sampling Options
 const float64 sampleRate = 1000; // The sampling rate in samples per second per channel.
 const uInt64 sampsPerChan = 1000; // The number of samples to acquire or generate for each channel in the task.
+
 // DAQmxCreateAOVoltageChan Options
 const char *physicalChannel = "Dev1/ao0"; // The names of the physical channels to use to create virtual channels. You can specify a list or range of physical channels.
 const float64 minVal = -10.0; // The minimum value, in units, that you expect to generate.
 const float64 maxVal = 10.0; // The maximum value, in units, that you expect to generate.
 const int32 units = DAQmx_Val_Volts; // The units in which to generate voltage. Options: DAQmx_Val_Volts, DAQmx_Val_FromCustomScale
+
 // DAQmxCfgSampClkTiming Options
 const char *clockSource = "OnboardClock"; // The source terminal of the Sample Clock. To use the internal clock of the device, use NULL or use OnboardClock.
 const int32 activeEdge = DAQmx_Val_Rising; // Specifies on which edge of the clock to generate samples. Options: DAQmx_Val_Rising, DAQmx_Val_Falling
 const int32 sampleMode = DAQmx_Val_FiniteSamps; // Specifies whether the task agenerates samples continuously or if it generates a finite number of samples. Options: DAQmx_Val_FiniteSamps, DAQmx_Val_ContSamps, DAQmx_Val_HWTimedSinglePoint
+
 // DAQmxCfgDigEdgeStartTrig Options
 const char *startTriggerSource = "/Dev1/PFI0"; // The name of a terminal where there is a digital signal to use as the source of the trigger.
 const int32 startTriggerEdge = DAQmx_Val_Rising; // Specifies on which edge of a digital signal to start acquiring or generating samples. Options: _Rising, _Falling
+
 // DAQmxSetStartTrigRetriggerable
 const bool32 retriggerable = 1; // Specifies whether a finite task resets and waits for another Start Trigger after the task completes.
+
 // DAQmxWriteAnalogF64 Options
 const bool32 autoStart = 0; // The amount of time, in seconds, to wait for this function to write all the samples. To specify an infinite wait, pass -1 (DAQmx_Val_WaitInfinitely).
 const float64 timeout = 10; // The amount of time, in seconds, to wait for the function to read the sample(s).
@@ -146,7 +151,7 @@ Error:
 	return 0;
 }
 
-int32 CVICALLBACK DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData)
+int32 DoneCallback(TaskHandle taskHandle, int32 status, void *callbackData)
 {
 	int32   error=0;
 	char    errBuff[2048]={'\0'};

@@ -44,6 +44,7 @@
 // DAQmxCreateDOChan Options
 const char *lines = "Dev1/port0"; // The names of the digital lines used to create a virtual channel. Specifying a port and no lines is the equivalent of specifying all the lines of that port in order.
 const int32 lineGrouping = DAQmx_Val_ChanForAllLines; // Specifies whether to group digital lines into one or more virtual channels. Options: DAQmx_Val_ChanPerLine, DAQmx_Val_ChanForAllLines
+
 // DAQmxWriteDigitalU32 Options
 const int32 numSampsPerChan = 1; // The number of samples, per channel, to write.
 const int32 autoStart = 1; // Specifies whether or not this function automatically starts the task if you do not start it.
