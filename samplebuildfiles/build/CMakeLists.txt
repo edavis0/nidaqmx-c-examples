@@ -20,40 +20,8 @@ project(ProjectName) # NOTE: Edit ProjectName to a project name of your choosing
 set(EXECUTABLE_OUTPUT_PATH bin)
 set(CMAKE_BUILD_TYPE Debug)
 
-include_directories(${toolchain_path}/core2-64-nilrt-linux/usr/include)
-add_executable(ProjectName ../src/SourceCodeName.c) # NOTE: Replace ProjectName and SourceCodeName to match your chosen project name and source code name
-
-# NOTE: ensure that you copy the contents of the real-time system's /usr/lib/x86_64-linux-gnu/ and /usr/local/natinst/lib folders and into the respective folder in your development toolchain
-add_library(nitargetcfg SHARED IMPORTED)
-set_property(TARGET nitargetcfg PROPERTY IMPORTED_LOCATION ${toolchain_path}/core2-64-nilrt-linux/usr/local/natinst/lib/libnitargetcfg.so.7.5.0)
-add_library(nirocoapi SHARED IMPORTED)
-set_property(TARGET nirocoapi PROPERTY IMPORTED_LOCATION ${toolchain_path}/core2-64-nilrt-linux/usr/lib/x86_64-linux-gnu/libnirocoapi.so.20.2.0)
-add_library(niprtsiu SHARED IMPORTED)
-set_property(TARGET niprtsiu PROPERTY IMPORTED_LOCATION ${toolchain_path}/core2-64-nilrt-linux/usr/lib/x86_64-linux-gnu/ni-rtsi/libniprtsiu.so.19.6.0)
-add_library(nisysapi SHARED IMPORTED)
-set_property(TARGET nisysapi PROPERTY IMPORTED_LOCATION ${toolchain_path}/core2-64-nilrt-linux/usr/lib/x86_64-linux-gnu/libnisysapi.so.20.0.0)
-add_library(niAvahiClient SHARED IMPORTED)
-set_property(TARGET niAvahiClient PROPERTY IMPORTED_LOCATION ${toolchain_path}/core2-64-nilrt-linux/usr/lib/x86_64-linux-gnu/libniAvahiClient.so.19.0.0)
-add_library(nimru2u SHARED IMPORTED)
-set_property(TARGET nimru2u PROPERTY IMPORTED_LOCATION ${toolchain_path}/core2-64-nilrt-linux/usr/lib/x86_64-linux-gnu/libnimru2u.so.20.0.0)
-add_library(nimhwcfu SHARED IMPORTED)
-set_property(TARGET nimhwcfu PROPERTY IMPORTED_LOCATION ${toolchain_path}/core2-64-nilrt-linux/usr/lib/x86_64-linux-gnu/libnimhwcfu.so.20.1.0)
-add_library(nimxdfu SHARED IMPORTED)
-set_property(TARGET nimxdfu PROPERTY IMPORTED_LOCATION ${toolchain_path}/core2-64-nilrt-linux/usr/lib/x86_64-linux-gnu/libnimxdfu.so.20.0.0)
-add_library(nicrtsiu SHARED IMPORTED)
-set_property(TARGET nicrtsiu PROPERTY IMPORTED_LOCATION ${toolchain_path}/core2-64-nilrt-linux/usr/lib/x86_64-linux-gnu/ni-rtsi/libnicrtsiu.so.20.0.0)
-add_library(nidimu SHARED IMPORTED)
-set_property(TARGET nidimu PROPERTY IMPORTED_LOCATION ${toolchain_path}/core2-64-nilrt-linux/usr/lib/x86_64-linux-gnu/libnidimu.so.20.0.0)
-add_library(nidmxfu SHARED IMPORTED)
-set_property(TARGET nidmxfu PROPERTY IMPORTED_LOCATION ${toolchain_path}/core2-64-nilrt-linux/usr/lib/x86_64-linux-gnu/libnidmxfu.so.1)
-add_library(nimdbgu SHARED IMPORTED)
-set_property(TARGET nimdbgu PROPERTY IMPORTED_LOCATION ${toolchain_path}/core2-64-nilrt-linux/usr/lib/x86_64-linux-gnu/libnimdbgu.so.20.0.0)
-add_library(niorbu SHARED IMPORTED)
-set_property(TARGET niorbu PROPERTY IMPORTED_LOCATION ${toolchain_path}/core2-64-nilrt-linux/usr/lib/x86_64-linux-gnu/libniorbu.so.20.0.0)
-add_library(nipalu SHARED IMPORTED)
-set_property(TARGET nipalu PROPERTY IMPORTED_LOCATION ${toolchain_path}/core2-64-nilrt-linux/usr/lib/x86_64-linux-gnu/libnipalu.so.20.0.0)
-add_library(nidaqmx SHARED IMPORTED)
-set_property(TARGET nidaqmx PROPERTY IMPORTED_LOCATION ${toolchain_path}/core2-64-nilrt-linux/usr/lib/x86_64-linux-gnu/libnidaqmx.so)
-
-target_link_libraries(ProjectName nitargetcfg nirocoapi niprtsiu nisysapi niAvahiClient nimru2u nimhwcfu nimxdfu nicrtsiu 
-                        nidimu nidmxfu nimdbgu niorbu nipalu nidaqmx ) # NOTE: Replace ProjectName to match your chosen project name
+set(HEADER_DIR "C:/Program\ Files\ (x86)/National\ Instruments/NI-DAQ/DAQmx\ ANSI\ C\ Dev/include")
+set(DAQMXLIBPATH "C:/Program\ Files\ (x86)/National\ Instruments/Shared/ExternalCompilerSupport/C/lib64/gcc")
+add_executable(ProjectName ../src/SourceCodeName.c ${HEADER_DIR}/NIDAQMX.h) # NOTE: Replace ProjectName and SourceCodeName to match your chosen project name and source code name
+target_include_directories(ProjectName PUBLIC ${HEADER_DIR})
+target_link_libraries(ProjectName PUBLIC ${DAQMXLIBPATH}/libnidaqmx.so)
