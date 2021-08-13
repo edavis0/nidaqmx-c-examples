@@ -21,7 +21,7 @@ This repository contains NI-DAQmx example programs. Each example contains C sour
 ## Building for NI Linux Real-Time OS
 To compile the source code on your host machine, you must install the GNU C/C++ Compile Tools for [x64 Linux][2] or [ARMv7 Linux][3]. Make sure to include the CMakeLists.txt file and .vscode directory when building the binary (included in "samplebuildfiles").
 
-It is highly recommended that you first learn how to cross-compile code and deploy to the NI Linux RTOS using Microsoft VSCode by visiting this [NI Forum Post][4]. Then, refer to this [NI KnowledgeBase Article][10] the included [guide][5] for extra tips.
+It is recommended you first learn how to cross-compile code and deploy to the NI Linux RTOS using Microsoft VSCode by visiting this [NI Forum Post][4]. Then, refer to this [NI KnowledgeBase Article][10] the included [guide][5] for extra tips.
 
 Note: to build for non-real-time, Windows based applications, it is recommended you use [LabWindows/CVI][9].
 
